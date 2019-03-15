@@ -3,6 +3,7 @@ Router for (vanilla) JS and apache
 https://github.com/shadowvzs/js-router/tree/master/project/js/base
 
 #### Note:
+* this is usefull for Single Page Apps :)
 * you can see alot files but the router itself mostly only:
     * Router.js (or Router class)
     * Routes.js (or routes object)
