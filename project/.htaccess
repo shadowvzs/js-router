@@ -1,0 +1,60 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    Options -Indexes
+    RewriteRule !\.(?:jpe?g|gif|mp3|bmp|png|tiff|css|js)$ index.html [L,NC,QSA]
+</IfModule>
+
+AddDefaultCharset utf-8
+
+# expiration time and eTag
+<IfModule mod_expires.c>
+  ExpiresActive On
+  FileETag MTime Size
+
+  ExpiresDefault "access plus 1 year"
+
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Video
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/mpeg "access plus 1 year"
+
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+
+  # Fonts
+  ExpiresByType font/truetype "access plus 1 year"
+
+  # Others
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType application/x-shockwave-flash "access plus 1 month"
+</IfModule>
+
+# Defining MIME types to ensure the web server actually knows about them.
+<IfModule mod_mime.c>
+   AddType application/javascript          js
+   AddType application/x-font-ttf          ttf ttc
+   AddType image/svg+xml                   svg svgz
+   AddEncoding gzip                        svgz
+</Ifmodule>
+
+# enable gzip compression for folllowing mime/file type
+<ifmodule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/text text/plain text/html text/plain text/xml text/css application/x-font-ttf application/json application/x-javascript application/javascript text/javascript
+</ifmodule>
+
+<ifmodule mod_deflate.c>
+    Addtype font/opentype .otf
+    Addtype font/eot .eot
+    Addtype font/truetype .ttf
+</ifmodule>
