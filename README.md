@@ -2,7 +2,7 @@
 Router for (vanilla) JS and apache
 
 #### Note:
-* in this branch you have can see more file but the router itself mostly only:
+* you can see alot files but the router itself mostly only:
     * Router.js (or Router class)
     * Routes.js (or routes object)
     * Validator.js (regex validator object)
